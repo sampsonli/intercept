@@ -48,6 +48,7 @@ function forwardInteceptHttp(req, res, host, ip, port, endPath) {
             if(~req.originalUrl.indexOf('=pf')){
                 console.log(json)
                 json.data.enemyblood = 100
+                json.data.setNum = 1
                 console.log(json)
             }
             res.end(JSON.stringify(json));
