@@ -5,17 +5,21 @@
 let fetch = require('node-fetch');
 let co = require('co');
 
-let user_ck = 'babbb78eeda2ec43b550c0c1ad492f4a';
-let fid = 'MqziIu21M0DsMdzx'
-co(function *() {
-    while (true){
-        fid = yield fetchId(fid,user_ck);
-        console.log(fid);
-        yield wait(600);
-    }
-}).catch(function (e) {
-    console.error(e)
-})
+let user_ck = 'e4e4156123a77c6ca059bf3ba64371d9';
+let fid = 'NqDiMu11M0DsQdzx'
+function send() {
+    co(function *() {
+        while (true){
+            fid = yield fetchId(fid,user_ck);
+            console.log(fid);
+            yield wait(780);
+        }
+    }).catch(function (e) {
+        console.error(e);
+        send()
+    })
+}
+send();
 
 
 function wait(time) {
